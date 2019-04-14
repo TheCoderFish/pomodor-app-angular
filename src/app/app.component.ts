@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Title} from '@angular/platform-browser'
+import { TimerService } from './timer.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pomodoro-app';
+  public constructor(private titleService: Title, private time:TimerService ) { }
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    let m = this.time.getMinutes();
+    let s = this.time.getSeconds();
+
+
+    this.time.timerEmitter.subscribe(() => {
+      m = this.time.getMinutes();
+      s = this.time.getSeconds();
+      this.titleService.setTitle(`${m} : ${s}`);
+    });
+  }
 }

@@ -1,0 +1,23 @@
+<div class="container">
+    <form #timedata='ngForm' (ngSubmit)="initTimer(timedata)">
+      <div class="form-group">
+        <label for="minutes">Enter Minutes of your Work Cycle</label>
+        <input type="text"  class="form-control"  name="minutes" placeholder="Enter minutes" [(ngModel)]="inputText">
+        <small id="minHelp" class="form-text text-muted">Choose time wisely based on your concentration levels.</small>
+      </div>
+
+      <button class="btn btn-block btn-primary mt-2" [ngClass]="{'btn-success disabled': this.isTimerOn}">
+        <ng-container *ngIf="this.isTimerOn; else elseTemplate1">
+          Timer Started , Work Cycle Begins
+        </ng-container>
+        <ng-template #elseTemplate1>
+          Set Timer
+        </ng-template>
+      </button>
+    </form>
+
+    <div class="pause text-center">
+      <button class="btn btn-danger btn-block mt-2 " (click)="pauseTimer()" [ngClass]="{'disabled': !this.isTimerOn}">Stop
+      </button>
+    </div>
+</div>

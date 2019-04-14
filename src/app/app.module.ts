@@ -1,14 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, NgForm} from '@angular/forms'
 
 import { AppComponent } from './app.component';
+import { ClockComponent } from './clock/clock.component';
+import { HeaderComponent } from './header/header.component';
+import { TimerDataComponent } from './timer-data/timer-data.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ClockComponent,
+    HeaderComponent,
+    TimerDataComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

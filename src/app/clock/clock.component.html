@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="showTime">
+    <h1 class="text-center">
+      <ng-container *ngIf="timerStarted; else elseTemplate">
+        Time Remaining
+      </ng-container>
+      <ng-template #elseTemplate>
+        Waiting For Input
+      </ng-template>
+    </h1>
+    <div class="mt-2">
+      <hr class="text-info">
+      <h2 class="text-center clock">{{mm}} : {{ss}}</h2>
+    </div>
+  </div>
+</div>
