@@ -1,14 +1,22 @@
-.showTime{
-  border : 2px solid #71bbbb;
+.showTimeStart{
+  border : 2px solid #28a745;
   border-radius: 14px;
   padding : 18px;
-  h1,h2{
+  h2{
     // background: #71bbbb;
     font-size: 45px;
-    color: #71bbbb;
+    color: #28a745;
   }
 }
 
-.clock{
 
+.showTimeStop{
+  border : 2px solid #dc3545;
+  border-radius: 14px;
+  padding : 18px;
+  h2{
+    // background: #71bbbb;
+    font-size: 45px;
+    color: #dc3545;
+  }
 }

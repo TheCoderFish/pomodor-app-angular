@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  today = new Observable<string>((observer: Observer<string>) => {
+    setInterval(() => observer.next(new Date().toString()), 1000);
+  });
+
+  feature: string = 'Improves time management and focus';
+
+  toggle: boolean = false;
+
+  getFormat() {
+    return this.toggle ? 'short' : 'medium'
+  }
+
+  constructor() {
+
+  }
 
   ngOnInit() {
   }

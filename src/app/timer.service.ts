@@ -12,6 +12,8 @@ export class TimerService {
   initTime : number;
   timerStarted: boolean = false;
   timerEmitter: EventEmitter<any> = new EventEmitter();
+  inputText  :string;
+
 
   startTimer(value) {
     this.timerStarted = true;
@@ -53,6 +55,16 @@ export class TimerService {
 
   getStatus() {
     return this.timerStarted;
+  }
+  getInputText(){
+    return this.inputText;
+  }
+
+  validateTimer(inp){
+    if(isNaN(inp)){
+      return false;
+    }
+    return true;
   }
 
   constructor() {

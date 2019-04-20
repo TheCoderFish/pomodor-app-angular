@@ -2,7 +2,7 @@
     <form #timedata='ngForm' (ngSubmit)="initTimer(timedata)">
       <div class="form-group">
         <label for="minutes">Enter Minutes of your Work Cycle</label>
-        <input type="text"  class="form-control"  name="minutes" placeholder="Enter minutes" [(ngModel)]="inputText">
+        <input type="text" id="inpMin" class="form-control"  name="minutes" placeholder="Enter minutes" [(ngModel)]="inputText">
         <small id="minHelp" class="form-text text-muted">Choose time wisely based on your concentration levels.</small>
       </div>
 

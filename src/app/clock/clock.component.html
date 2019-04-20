@@ -1,16 +1,16 @@
 <div class="container">
-  <div class="showTime">
-    <h1 class="text-center">
-      <ng-container *ngIf="timerStarted; else elseTemplate">
-        Time Remaining
-      </ng-container>
-      <ng-template #elseTemplate>
-        Waiting For Input
-      </ng-template>
-    </h1>
+  <div class="showTimeStart" [ngClass]="{'showTimeStop': !timerStarted}" >
     <div class="mt-2">
-      <hr class="text-info">
       <h2 class="text-center clock">{{mm}} : {{ss}}</h2>
     </div>
+    <h3 class="text-center">
+        <hr class="text-info">
+      <ng-container *ngIf="timerStarted; else elseTemplate">
+        <span style="color:#28a745">TIME REMAINING</span>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <span style="color:#dc3545">Seems like you havent started working yet ?</span>
+      </ng-template>
+    </h3>
   </div>
 </div>

@@ -13,18 +13,21 @@ export class TimerDataComponent implements OnInit {
   @Input() inputText: string;
 
   initTimer(form: NgForm) {
-    if (this.inputText === undefined) {
-      this.showError();
-    } else {
+    if (this.time.validateTimer(this.inputText)) {
       this.time.startTimer(parseInt(this.inputText));
+    }else{
+      this.showError();
     }
 
   }
 
   showError() {
-    this.inputText = 'Please Enter Valid Data';
+    let inpBox = (document.querySelector('#inpMin') as HTMLTextAreaElement);
+    inpBox.placeholder = 'Please Enter Valid Data';
+    inpBox.classList.add('error');
     setTimeout(() => {
-      this.inputText = "";
+      inpBox.placeholder = "Enter Minutes";
+      inpBox.classList.remove('error');
     }, 4000);
   }
 
