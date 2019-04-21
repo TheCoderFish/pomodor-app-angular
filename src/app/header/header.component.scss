@@ -1,18 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
 .jumbotron{
   padding: 10px;
   color: grey;
-  h1{
-    .img{
-      height: 120px;
-      width: 250px;
+  margin-bottom: 16px;
+  font-family: 'Josefin Sans', sans-serif;
+    .date-time{
+      display: inline-block;
+      position: relative;
+      padding: 8px;
+      font-weight: bold;
+      font-size: 20px;
     }
-  }
-  .today{
-    display: inline-block;
-    position: relative;
-    padding: 8px;
-    font-weight: bold;
-    font-size: 20px;
-    color: #1f1e1e;
-  }
 }

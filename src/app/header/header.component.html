@@ -1,10 +1,12 @@
 <div class="jumbotron text-center">
-  <h1>
-    <img class="header" height="120px" width="230px" src="./../../assets/images/pomodoro-technique.svg" alt="The Pomodoro Technique"
-      title="The Pomodoro Technique">
-  </h1>
-  <h3><u> {{ feature | uppercase}} </u></h3>
-    <div class="today">
-      {{today | async | date : 'medium'}}
-    </div>
+  <div class="logo my-2">
+    <a href="https://francescocirillo.com/pages/pomodoro-technique">
+      <img class="header" height="120px" width="230px" src="./../../assets/images/pomodoro-technique.svg" alt="The Pomodoro Technique"
+        title="The Pomodoro Technique">
+    </a>
+  </div>
+  <h3 class="motto"><u> {{ feature }} </u></h3>
+  <div class="date-time">
+    {{today | async | date : 'medium'}}
+  </div>
 </div>

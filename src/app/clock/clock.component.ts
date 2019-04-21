@@ -8,21 +8,17 @@ import { TimerService } from "../timer.service";
 })
 export class ClockComponent implements OnInit {
 
-  timerStarted: boolean = this.time.timerStarted;
-  mm: string = this.time.minutes;
-  ss: string = this.time.seconds;
+  currentTimeRemaining: string ;
+  timerStarted: boolean;
 
-  constructor(private time: TimerService) {
+  constructor(private timerInterface: TimerService) {
 
   }
 
   ngOnInit() {
-    this.time.timerEmitter.subscribe(
-      (x)=>{
-        this.mm = this.time.getMinutes();
-        this.ss = this.time.getSeconds();
-        this.timerStarted = this.time.getStatus();
-      })
-
+    this.timerInterface.signal.subscribe(()=>{
+      this.currentTimeRemaining = this.timerInterface.getFormattedTime();
+      this.timerStarted = this.timerInterface.getStatus();
+    })
   }
 }
