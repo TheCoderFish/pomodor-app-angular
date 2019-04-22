@@ -10,6 +10,7 @@ export class ClockComponent implements OnInit {
 
   currentTimeRemaining: string ;
   timerStarted: boolean;
+  timerCompleted: boolean;
 
   constructor(private timerInterface: TimerService) {
 
@@ -19,6 +20,7 @@ export class ClockComponent implements OnInit {
     this.timerInterface.signal.subscribe(()=>{
       this.currentTimeRemaining = this.timerInterface.getFormattedTime();
       this.timerStarted = this.timerInterface.getStatus();
+      this.timerCompleted = this.timerInterface.getCompleted();
     })
   }
 }

@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit {
     setInterval(() => observer.next(new Date().toString()), 1000);
   });
 
+
+
   feature: string = 'Work Smarter, Not Harder';
 
   constructor() {

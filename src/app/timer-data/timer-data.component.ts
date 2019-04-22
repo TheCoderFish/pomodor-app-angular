@@ -10,6 +10,7 @@ import {  NgForm } from '@angular/forms'
 export class TimerDataComponent implements OnInit {
 
   isTimerOn: boolean;
+  isComplete : boolean;
 
   initTimer(form: NgForm) {
     let value: number = parseInt(form.controls.minutes.value);
@@ -43,6 +44,7 @@ export class TimerDataComponent implements OnInit {
   ngOnInit() {
     this.timerInterface.signal.subscribe(() => {
       this.isTimerOn = this.timerInterface.getStatus();
+      this.isComplete = this.timerInterface.getCompleted();
     }
     )
   }

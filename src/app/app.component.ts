@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Title} from '@angular/platform-browser'
 import { TimerService } from './timer.service';
-import { ObsTimerService } from './obs-timer.service';
+
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { ObsTimerService } from './obs-timer.service';
 })
 export class AppComponent {
 
-  public constructor(private titleService: Title, private time:TimerService, private obsTimer:ObsTimerService) { }
+  public constructor(private titleService: Title, private time:TimerService) { }
 
   ngOnInit(): void {
     this.time.signal.subscribe(() => {

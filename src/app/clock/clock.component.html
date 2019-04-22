@@ -1,14 +1,19 @@
 <div class="container">
-  <div class="showTimeStart" [ngClass]="{'showTimeStop': !timerStarted}" >
+  <div  [ngClass]="{'showTimeStop': !timerStarted,'showTimeStart':timerStarted}" >
     <div class="mt-2">
-      <h2 class="text-center clock">{{currentTimeRemaining}}</h2>
+      <h2 *ngIf="timerStarted" class="text-center clock">{{currentTimeRemaining}}</h2>
     </div>
     <h3 class="text-center">
       <ng-container *ngIf="timerStarted; else elseTemplate">
         <span style="color:#28a745">TIME REMAINING</span>
       </ng-container>
       <ng-template #elseTemplate>
-        <span style="color:#dc3545">Seems like you havent started working yet ?</span>
+        <ng-container *ngIf="timerCompleted; else elseTemplate">
+            <span style="color:#28a745">TIMER COMPLETE !!! TAKE A BREAK </span>
+        </ng-container>
+        <ng-template #elseTemplate>
+            <span style="color:#dc3545">Seems like you havent started working yet ?</span>
+        </ng-template>
       </ng-template>
     </h3>
   </div>

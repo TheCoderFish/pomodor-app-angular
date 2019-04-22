@@ -6,35 +6,37 @@ import { EventEmitter } from '@angular/core';
 })
 export class TimerService {
   private timerStarted: boolean = false;
+  private timerCompleted : boolean = false;
   signal: EventEmitter<any> = new EventEmitter();
 
 
   private myTimer;
-  private timeRemaining ;
+  private timeRemaining;
 
 
   startTimer(value) {
+    let totalSecs = value * 1;
+
+    let minutes = "";
+    let seconds = "";
+
+    //this.timerCompleted = false;
     this.timerStarted = true;
     this.signal.emit();
 
-    let deadLine = new Date().getTime() + value * 60 * 1000;
 
     this.myTimer = setInterval(() => {
-      let minutes = "";
-      let seconds = "";
-      let now = new Date().getTime();
-      let t = deadLine - now;
-      if (t < 0) {
+      if (totalSecs < 0) {
         this.stopTimer();
       } else {
-        let m = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-        let s = Math.floor((t / 1000) % 60);
-
+        let m = Math.floor(totalSecs / 60);
+        let s = totalSecs % 60;
         minutes = m < 10 ? '0' + m : m + "";
         seconds = s < 10 ? '0' + s : s + "";
 
         this.timeRemaining = `${minutes} : ${seconds}`;
         this.signal.emit();
+        totalSecs--;
       }
     }, 1000);
   }
@@ -42,6 +44,7 @@ export class TimerService {
   stopTimer() {
     clearInterval(this.myTimer);
     this.timerStarted = false;
+    this.timerCompleted = true;
     this.signal.emit();
 
   }
@@ -50,7 +53,11 @@ export class TimerService {
     return this.timerStarted;
   }
 
-  getFormattedTime(){
+  getCompleted(){
+    return this.timerCompleted;
+  }
+
+  getFormattedTime() {
     return this.timeRemaining;
   }
 
